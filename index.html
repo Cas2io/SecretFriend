@@ -30,6 +30,33 @@
     <p>Seu presente está a caminho…</p>
     <p>Ele atrasou, mas chega! 😄</p>
     <p><strong>Spoiler:</strong> vale a espera 😉</p>
+    <p>⏳ Falta só:</p>
+    <h2 id="contador"></h2>
+
   </div>
+<script>
+  const dataEntrega = new Date("2026-01-02T00:00:00"); // altere a data
+
+  function atualizarContador() {
+    const agora = new Date();
+    const diff = dataEntrega - agora;
+
+    if (diff <= 0) {
+      document.getElementById("contador").innerText = "🎁 CHEGOU!";
+      return;
+    }
+
+    const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const horas = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const minutos = Math.floor((diff / (1000 * 60)) % 60);
+
+    document.getElementById("contador").innerText =
+      `${dias} dias, ${horas}h e ${minutos}min`;
+  }
+
+  atualizarContador();
+  setInterval(atualizarContador, 60000);
+</script>
+
 </body>
 </html>
